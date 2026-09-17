@@ -101,7 +101,7 @@
             compatible = "zmk,input-processor-zoom";
             #input-processor-cells = <0>;
             event-code = <INPUT_REL_MISC>;
-            sensitivity = <10>;
+            sensitivity = <5>;
 #ifdef TOUCAN_WIN_MODE
             bindings = <&kp LC(MINUS)>, <&kp LC(EQUAL)>;
 #else
@@ -115,7 +115,7 @@
             #input-processor-cells = <0>;
 
             codes = <INPUT_BTN_TOUCH>;      // watch for the 'touch' pseudo button
-            bindings  = <&mo 4>;            // Activate Layer 4 while held &mo 4
+            bindings  = <&mo 3>;            // Activate Layer 3 while held &mo 3
         };
 
         swipe_button_mapper: swipe_button_mapper {

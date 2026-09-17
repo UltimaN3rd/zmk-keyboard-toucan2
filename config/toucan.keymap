@@ -5,16 +5,26 @@
 #include <dt-bindings/zmk/pointing.h>
 
 #define BASE 0
-#define NAV  1
-#define SYM  2
-#define ADJ  3
+#define NUMNAV 1
+#define FNMEDIA 2
+#define MOUSE 3
+
+&mt {
+    quick-tap-ms = <200>;
+    tapping-term-ms = <200>;
+    flavor = "balanced";
+};
 
 / {
-    conditional_layers {
-        compatible = "zmk,conditional-layers";
-        tri_layer {
-            if-layers = <1 2>;
-            then-layer = <3>;
+    behaviors {
+        capsword_capslock: capsword_capslock {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+
+            tapping-term-ms = <200>;
+            flavor = "tap-preferred";
+
+            bindings = <&kp &caps_word>;
         };
     };
 
@@ -22,53 +32,47 @@
         compatible = "zmk,keymap";
 
         base {
-            display-name = "BASE";
+            display-name = "QWERT";
             bindings = <
-                &kp TAB   &kp Q &kp W &kp E &kp R &kp T   &kp Y &kp U  &kp I     &kp O   &kp P    &kp BSPC
-                &kp LCTRL &kp A &kp S &kp D &kp F &kp G   &kp H &kp J  &kp K     &kp L   &kp SEMI &kp SQT
-                &kp LSHFT &kp Z &kp X &kp C &kp V &kp B   &kp N &kp M  &kp COMMA &kp DOT &kp FSLH &kp ESC
-                                &kp LGUI &mo 1 &kp SPACE   &kp RET &mo 2 &kp RALT
+                &none &kp Q &kp W &kp E &kp R &kp T                        &kp Y     &kp U &kp I  &kp O  &kp P &none
+                &none &kp A &kp S &kp D &kp F &kp G                        &kp H     &kp J &kp K  &kp L  &kp SEMI &none
+                &none &kp Z &kp X &kp C &kp V &capsword_capslock CAPS 0       &kp COMMA &kp B &kp N  &kp M  &kp DOT &none
+               &mt LGUI RETURN  &mt LCTRL SPACE  &mo 1                     &mo 2  &mt LSHFT BSPC  &mt LALT DEL
             >;
         };
 
-        nav {
-            display-name = "NAV";
+        numnav {
+            display-name = "Num-Nav";
             bindings = <
-                &kp TAB     &kp N1          &kp N2       &kp N3       &kp N4       &kp N5         &kp N6   &kp N7   &kp N8 &kp N9    &kp N0 &kp BSPC
-                &bt BT_CLR  &bt BT_SEL 0    &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4   &kp LEFT &kp DOWN &kp UP &kp RIGHT &trans &trans
-                &kp LSHFT   &studio_unlock  &trans       &trans       &trans       &trans         &trans   &trans   &trans &trans    &trans &trans
-                                                &kp LGUI     &trans       &kp SPACE      &kp RET  &trans   &kp RALT
+                &none &kp GRAVE &kp N7 &kp N8 &kp N9 &kp MINUS        &kp PG_UP &kp HOME &kp TAB  &kp END   &kp ESCAPE &none
+                &none &kp SLASH &kp N4 &kp N5 &kp N6 &kp EQUAL        &kp PG_DN &kp LEFT &kp UP   &kp RIGHT &kp SINGLE_QUOTE &none
+                &none &kp N0    &kp N1 &kp N2 &kp N3 &trans           &kp BSLH  &kp LBKT &kp DOWN &kp RBKT  &kp PRINTSCREEN &none
+                     &mt LALT RETURN &mt LSHFT SPACE &none            &none &mt LCTRL BSPC &mt LGUI DEL
             >;
         };
 
-        sym {
-            display-name = "SYM";
+        fnmedia {
+            display-name = "Fn-Media";
             bindings = <
-                &kp TAB   &kp EXCL &kp AT &kp HASH &kp DLLR &kp PRCNT   &kp CARET &kp AMPS  &kp KP_MULTIPLY &kp LPAR &kp RPAR &kp BSPC
-                &kp LCTRL &trans   &trans &trans   &trans   &trans      &kp MINUS &kp EQUAL &kp LBKT        &kp RBKT &kp BSLH &kp GRAVE
-                &kp LSHFT &trans   &trans &trans   &trans   &trans      &kp UNDER &kp PLUS  &kp LBRC        &kp RBRC &kp PIPE &kp TILDE
-                                          &kp LGUI &trans   &kp SPACE   &kp RET   &trans    &kp RALT
-            >;
-        };
-
-        adj {
-            display-name = "ADJ";
-            bindings = <
-                &mo TAB   &trans &kp F7 &kp F8 &kp F9 &kp F12   &kp C_VOL_DN &kp C_MUTE  &kp C_VOL_UP &trans &trans &kp BSPC
-                &kp LCTRL &trans &kp F4 &kp F5 &kp F6 &kp F11   &trans       &trans      &trans       &trans &trans &trans
-                &bt LSHFT &trans &kp F1 &kp F2 &kp F3 &kp F10   &trans       &trans      &trans       &trans &trans &trans
-                                   &kp LGUI &mo NAV &kp SPACE   &kp RET &mo 2 &kp RALT
+                &none &kp F12 &kp F7 &kp F8 &kp F9 &trans          &kp C_VOL_UP &kp C_PREV   &kp C_PLAY_PAUSE &kp C_NEXT &trans &none
+                &none &kp F11 &kp F4 &kp F5 &kp F6 &trans          &kp C_VOL_DN &kp C_BRI_UP &trans           &trans     &trans &none
+                &none &kp F10 &kp F1 &kp F2 &kp F3 &trans          &kp C_MUTE   &kp C_BRI_DN &trans           &trans     &trans &none
+                     &mt LALT RETURN &mt LSHFT SPACE &none         &none &mt LCTRL BSPC &mt LGUI DEL
             >;
         };
 
         mouse {
-            display-name = "MOU";
+            display-name = "Mouse";
             bindings = <
-                &trans &trans &trans &trans &trans &trans           &trans &trans &trans &trans &trans &trans
-                &trans &trans &trans &trans &trans &trans           &trans &trans &trans &trans &trans &trans
-                &trans &trans &trans &trans &trans &trans           &trans &trans &trans &trans &trans &trans
-                            &mkp MCLK &mkp LCLK &mkp RCLK           &mkp LCLK &mkp RCLK &mkp MCLK
+                &none &trans &trans &trans &trans &trans           &bt BT_PRV &trans &trans &trans &trans &none
+                &none &trans &trans &trans &trans &trans           &bt BT_NXT &trans &trans &trans &trans &none
+                &none &trans &trans &trans &trans &trans           &bt BT_CLR &trans &trans &trans &trans &none
+                     &mkp RCLK &mkp LCLK &mkp MCLK           &mkp MB4 &mkp MB5 &studio_unlock
             >;
+        };
+
+        extra_1 {
+                status = "reserved";
         };
 
         extra_2 {
