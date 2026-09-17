@@ -34,10 +34,10 @@
         base {
             display-name = "QWERT";
             bindings = <
-                &none &kp Q &kp W &kp E &kp R &kp T                        &kp Y     &kp U &kp I  &kp O  &kp P &none
-                &none &kp A &kp S &kp D &kp F &kp G                        &kp H     &kp J &kp K  &kp L  &kp SEMI &none
-                &none &kp Z &kp X &kp C &kp V &capsword_capslock CAPS 0       &kp COMMA &kp B &kp N  &kp M  &kp DOT &none
-               &mt LGUI RETURN  &mt LCTRL SPACE  &mo 1                     &mo 2  &mt LSHFT BSPC  &mt LALT DEL
+                &none &kp Q &kp W &kp E &kp R &kp T                  &kp Y     &kp U &kp I  &kp O  &kp P &none
+                &none &kp A &kp S &kp D &kp F &kp G                  &kp H     &kp J &kp K  &kp L  &kp SEMI &none
+                &none &kp Z &kp X &kp C &kp V &kp SINGLE_QUOTE       &kp COMMA &kp B &kp N  &kp M  &kp DOT &none
+            &mt LGUI RETURN  &mt LCTRL SPACE  &mo 1                  &mo 2  &mt LSHFT BSPC  &mt LALT DEL
             >;
         };
 
@@ -45,7 +45,7 @@
             display-name = "Num-Nav";
             bindings = <
                 &none &kp GRAVE &kp N7 &kp N8 &kp N9 &kp MINUS        &kp PG_UP &kp HOME &kp TAB  &kp END   &kp ESCAPE &none
-                &none &kp SLASH &kp N4 &kp N5 &kp N6 &kp EQUAL        &kp PG_DN &kp LEFT &kp UP   &kp RIGHT &kp SINGLE_QUOTE &none
+                &none &kp SLASH &kp N4 &kp N5 &kp N6 &kp EQUAL        &kp PG_DN &kp LEFT &kp UP   &kp RIGHT &capsword_capslock CAPS 0 &none
                 &none &kp N0    &kp N1 &kp N2 &kp N3 &trans           &kp BSLH  &kp LBKT &kp DOWN &kp RBKT  &kp PRINTSCREEN &none
                      &mt LALT RETURN &mt LSHFT SPACE &none            &none &mt LCTRL BSPC &mt LGUI DEL
             >;
