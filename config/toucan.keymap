@@ -46,7 +46,7 @@
             bindings = <
                 &none &kp GRAVE &kp N7 &kp N8 &kp N9 &kp MINUS        &kp PG_UP &kp HOME &kp TAB  &kp END   &kp ESCAPE &none
                 &none &kp SLASH &kp N4 &kp N5 &kp N6 &kp EQUAL        &kp PG_DN &kp LEFT &kp UP   &kp RIGHT &capsword_capslock CAPS 0 &none
-                &none &kp N0    &kp N1 &kp N2 &kp N3 &trans           &kp BSLH  &kp LBKT &kp DOWN &kp RBKT  &kp PRINTSCREEN &none
+                &none &kp N0    &kp N1 &kp N2 &kp N3 &trans           &kp BSLH  &kp LBKT &kp DOWN &kp RBKT  &trans &none
                      &mt LALT RETURN &mt LSHFT SPACE &none            &none &mt LCTRL BSPC &mt LGUI DEL
             >;
         };
@@ -54,7 +54,7 @@
         fnmedia {
             display-name = "Fn-Media";
             bindings = <
-                &none &kp F12 &kp F7 &kp F8 &kp F9 &trans          &kp C_VOL_UP &kp C_PREV   &kp C_PLAY_PAUSE &kp C_NEXT &trans &none
+                &none &kp F12 &kp F7 &kp F8 &kp F9 &trans          &kp C_VOL_UP &kp C_PREV   &kp C_PLAY_PAUSE &kp C_NEXT &kp PRINTSCREEN &none
                 &none &kp F11 &kp F4 &kp F5 &kp F6 &trans          &kp C_VOL_DN &kp C_BRI_UP &trans           &trans     &trans &none
                 &none &kp F10 &kp F1 &kp F2 &kp F3 &trans          &kp C_MUTE   &kp C_BRI_DN &trans           &trans     &trans &none
                      &mt LALT RETURN &mt LSHFT SPACE &none         &none &mt LCTRL BSPC &mt LGUI DEL
